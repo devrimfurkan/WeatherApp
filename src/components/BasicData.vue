@@ -17,13 +17,12 @@
                 
                 API 5 günlük hava durumu verisini 3 saatlik dilimler halinde veriyor, dikkat edilmesi gereken nokta
                 hava durumlarını talebin yapıldığı saatten itibaren veriyor, yani saat 17.00'da talepte bulunduysanız
-                içinde bulunduğunuz gün için yalnızca 18.00 21.00 ve 24.00'deki hava durumları verinin içerisinde bulunuyor
-                veriyi günlere parçalarken buna dikkat edin.
+                içinde bulunduğunuz gün için yalnızca 18.00 21.00 ve 24.00'deki hava durumları verinin içerisinde bulunuyor.
             -->
             <template v-for="hourlyData in mapDailyDataToWeatherInfo" :key="hourlyData.date">
                 <div class="card bg-dark m-2 col-3" style="text-align: center;">
                     <div class="card-body">
-                        <span class="text-white-50">24 Saat </span><span>{{ hourlyData.date }}</span>
+                       <span>{{ hourlyData.date.slice(0,16)}}</span>
                         <p>{{ hourlyData.temperature }}°C</p>
                         <p>{{ hourlyData.description }}</p>
                     </div>
@@ -34,17 +33,7 @@
                     <img v-bind:src="hourlyData.icon" alt="sun" class="mx-auto" style="height: 75px;">
                 </div>
             </template>
-        </div>
-        <div class="card bg-dark m-2" style="text-align: center;">
-            <div class="card-body">
-                <span class="text-white-50">{{dailyData.list[4].dt_txt.slice(0,10)}}</span>
-                <p>{{dailyData.list[4].dt_txt.slice(11,16)}}</p>
-                <p>{{ Math.round(dailyData.list[4].main.temp)}}°C</p>
-            </div>
-            <img src="@/assets/sun.png" alt="sun" class="mx-auto" style="height: 75px;">
-        </div>
-
-       
+        </div>   
     </div>
 </template>
 
@@ -58,14 +47,11 @@ export default {
     },
     // Computed kısmında belirli bir işlem gerektiren verileri tutuyoruz
     // BURADAKİ METODLARI TEMPLATE İÇERİSİNDE ÇAĞIRAMIYORUZ, sabit bir veriymiş
-    // gibi kullanıyoruz, yukarıda buradaki metodların nasıl kullanıldığına bakın
+    // gibi kullanıyoruz
     computed: {
         currentTemperature() {
-<<<<<<< HEAD
             console.log(this.dailyData.list);
             console.log(this.currentData.main.temp)
-=======
->>>>>>> 93ed6e03e6a1d7e47d9a08598f7e0dcac34a0817
             return Math.round(this.currentData.main.temp)
         },
         // Saatlik parçalar halinde gelen verileri JSON nesnelerine map le
