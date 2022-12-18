@@ -73,7 +73,7 @@ export default {
     },
     props: {
         currentData: Object,
-        dailyData: Object
+        dailyData: Object,
     },
     computed: {
         data() {
@@ -82,6 +82,7 @@ export default {
         }
     },
         progressPercent() {
+            console.log(this.dates)
             let currentMinutes = (new Date().getHours() * 60) + new Date().getMinutes();
             let sunsetMinutes = (new Date(this.currentData.sys.sunset * 1000).getHours() * 60) + new Date(this.currentData.sys.sunset).getMinutes();
             return Math.round(currentMinutes / sunsetMinutes * 100);

@@ -2,6 +2,7 @@
     <div class="p-0">
         <canvas id="myChart" class="text-light"></canvas>
         <div v-if="map" class="d-flex justify-content-between">
+            <p></p>
             <p v-for="val in tempValues" :key="val">{{ Math.round(val) }}°C</p>
         </div>
     </div>
@@ -37,7 +38,8 @@ export default {
                 if(this.map.size == 5) {
                     break;
                 }
-
+                // console.log(val.dt_txt)
+                // console.log(val.main.temp)
                 let data = new Date(val.dt * 1000).toLocaleDateString(undefined, {month: "short", day: "numeric"});
                 if(!this.map.has(data)) {
                     this.map.set(data, val.main.temp)
@@ -95,6 +97,7 @@ export default {
                 }
             }
         });
+        // console.log(values)
         console.log(myChart)
     }
 }

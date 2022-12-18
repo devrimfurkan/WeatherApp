@@ -10,7 +10,7 @@
                 </div>
                 <div class="w-75 text-center">
                     <div class="form-outline">
-                        <div class="text-start text-muted text-red">Şehir Giriniz</div>
+                        <div class="text-start text-muted" ><p class="text-warning">Şehir Giriniz</p></div>
                         <input v-model="cityName" type="search" id="searchForm" class="form-control bg-light text-warning" placeholder="" aria-label="Search" style="--mdb-bg-opacity: 0.3;" />
                     </div>
                     <button type="button" class="btn btn-outline-warning mt-3" data-mdb-ripple-color="warning" @click="search()">Ara</button>
